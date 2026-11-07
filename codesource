@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Chat · International Chatting & Creator Earnings</title>
+  <!-- Font Awesome for icons (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f6f9fc;
+      color: #1a2b3e;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .site-header {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      padding: 16px 0;
+      border-bottom: 1px solid #e4edf5;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: #0a66c2;
+      background: #e6f0ff;
+      padding: 8px 10px;
+      border-radius: 14px;
+      font-size: 1.4rem;
+    }
+
+    .logo span {
+      color: #0a66c2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0a66c2;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #0a66c2;
+      background: transparent;
+      color: #0a66c2;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: default;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #0a66c2;
+      color: white;
+      border: none;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: default;
+      box-shadow: 0 6px 14px rgba(10, 102, 194, 0.25);
+      transition: 0.2s;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e6f0ff;
+      color: #0a66c2;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 20px;
+      border: 1px solid #cce0ff;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #0b1e2e;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #0a66c2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #3a4d5e;
+      max-width: 550px;
+      margin-bottom: 30px;
+    }
+
+    .fee-disclosure {
+      background: #fff9e6;
+      border-left: 4px solid #f5b342;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .fee-disclosure i {
+      color: #f5b342;
+      font-size: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-large {
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+    }
+
+    .hero-visual {
+      flex: 1 1 320px;
+      background: linear-gradient(145deg, #ffffff, #f0f7ff);
+      border-radius: 42px;
+      padding: 28px 22px;
+      box-shadow: 0 30px 40px -20px rgba(0, 35, 70, 0.2);
+      border: 1px solid #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-bubble {
+      background: white;
+      border-radius: 20px 20px 20px 6px;
+      padding: 12px 18px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+      font-size: 0.95rem;
+      border: 1px solid #eaf1fa;
+      max-width: 85%;
+    }
+
+    .chat-bubble.right {
+      background: #0a66c2;
+      color: white;
+      align-self: flex-end;
+      border-radius: 20px 20px 6px 20px;
+    }
+
+    .online-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #2e7d32;
+      background: #e8f5e9;
+      padding: 8px 16px;
+      border-radius: 40px;
+      width: fit-content;
+      font-weight: 500;
+    }
+
+    .online-indicator i {
+      font-size: 0.6rem;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      color: #3a4d5e;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: white;
+      padding: 14px 12px;
+      border-radius: 18px;
+      border: 1px solid #eaf1fa;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #0a66c2;
+    }
+
+    /* section headers */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #0b1e2e;
+    }
+
+    .section-sub {
+      color: #4b6277;
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+
+    /* feature grid */
+    .features-section {
+      padding: 70px 0;
+      background: white;
+      border-radius: 48px 48px 0 0;
+      margin-top: 20px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: #f9fcff;
+      border-radius: 28px;
+      padding: 28px 24px;
+      border: 1px solid #e1eefb;
+      transition: 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .feature-card:hover {
+      border-color: #b8d6f5;
+      box-shadow: 0 20px 25px -12px rgba(0, 80, 160, 0.1);
+    }
+
+    .feature-icon {
+      background: #e6f0ff;
+      color: #0a66c2;
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 1.8rem;
+      margin-bottom: 22px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #0b1e2e;
+    }
+
+    .feature-card p {
+      color: #3e576b;
+      font-size: 0.95rem;
+    }
+
+    /* Journey / roles */
+    .journey-section {
+      padding: 60px 0 50px;
+    }
+
+    .two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .col {
+      flex: 1 1 300px;
+    }
+
+    .state-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .state-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 1px solid #e1eefb;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .state-item i {
+      color: #0a66c2;
+      width: 20px;
+    }
+
+    .admin-badge {
+      background: #1a2b3e;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: auto;
+    }
+
+    /* technical highlights */
+    .tech-section {
+      background: #0b1e2e;
+      color: white;
+      padding: 58px 0;
+      border-radius: 48px 48px 0 0;
+      margin-top: 30px;
+    }
+
+    .tech-section .section-title {
+      color: white;
+    }
+
+    .tech-section .section-sub {
+      color: #b0c9df;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 22px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tech-item i {
+      font-size: 1.8rem;
+      color: #6bb4ff;
+      margin-bottom: 12px;
+    }
+
+    .tech-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .tech-item p {
+      color: #cbdae9;
+      font-size: 0.85rem;
+    }
+
+    /* footer */
+    .footer {
+      background: #0b1e2e;
+      color: #b0c9df;
+      padding: 40px 0 30px;
+      border-top: 1px solid #1f3246;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer a {
+      color: #b0c9df;
+      text-decoration: none;
+      margin-right: 18px;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .disclaimer {
+      font-size: 0.8rem;
+      color: #7b97b0;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #1f3246;
+    }
+
+    @media (max-width: 680px) {
+      .hero h1 { font-size: 2.3rem; }
+      .nav-links { display: none; }
+      .header-inner { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <i class="fas fa-globe-americas"></i>
+      <span>Global</span>Chat
+    </div>
+    <div class="nav-links">
+      <a href="#">How it works</a>
+      <a href="#">Fees</a>
+      <a href="#">Safety</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <button class="btn-outline" aria-label="Log in (demo)">Log in</button>
+      <button class="btn-primary" aria-label="Sign up (demo)">Sign up</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="container hero">
+  <div class="hero-content">
+    <div class="badge"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>One‑time KSh 35 activation · verified payment unlocks</div>
+    <h1>Chat globally.<br><span>Earn legitimately.</span></h1>
+    <p>International real‑time chat with transparent paid sessions. Activate once with M‑Pesa STK Push, build your profile, and earn through consensual, clearly‑priced conversations.</p>
+    <div class="fee-disclosure">
+      <i class="fas fa-info-circle"></i>
+      <div><strong>Activation fee KSh 35</strong> only unlocks platform access. It does not guarantee chats, income, or withdrawals. No hidden earnings promises.</div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-primary btn-large"><i class="fas fa-user-plus" style="margin-right: 8px;"></i>Create account</button>
+      <button class="btn-outline btn-large" style="background: white;"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Explore features</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="online-indicator"><i class="fas fa-circle"></i> 128 members online</div>
+    <div class="chat-preview">
+      <div class="chat-bubble">Hey! I saw you're from Japan. I offer paid chat at KSh 15/min.</div>
+      <div class="chat-bubble right">Sounds good! Both accept? <i class="fas fa-check-circle" style="margin-left: 6px;"></i></div>
+      <div class="chat-bubble">Yes — cost estimate shown. 3 min max ≈ KSh 45. 👍</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-value">2.1k</div>active earners</div>
+      <div class="stat-item"><div class="stat-value">KSh 35</div>one‑time activation</div>
+      <div class="stat-item"><div class="stat-value">100%</div>ledger‑backed</div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE FEATURES (from document) -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Everything you need to chat & earn</h2>
+    <p class="section-sub">Built for international connections, with safety and transparency at the core.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+        <h3>Secure onboarding</h3>
+        <p>Email + phone verification, 8‑char password hashing, and a locked dashboard until KSh 35 activation is confirmed via M‑Pesa callback.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+        <h3>Real‑time chat</h3>
+        <p>One‑to‑one messaging with typing indicators, online status, message history, block & report — all through WebSocket.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-coins"></i></div>
+        <h3>Consensual paid sessions</h3>
+        <p>Both parties see rate, billing unit, and estimated max cost before starting. Server‑measured duration and ledger‑based charging.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+        <h3>Transparent earnings</h3>
+        <p>Wallet shows pending, available, paid‑out, reversed and disputed amounts. Payouts after minimum threshold and verification.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+        <h3>Admin & moderation</h3>
+        <p>Role‑based admin dashboard with payment reconciliation, dispute handling, audit logs and dual approval for payouts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-globe"></i></div>
+        <h3>International directory</h3>
+        <p>Search and filter by country, language, online status. Profile previews show availability and chat rates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / STATES -->
+<section class="journey-section container">
+  <div class="two-col">
+    <div class="col">
+      <h2 class="section-title" style="font-size: 1.8rem;">User journey</h2>
+      <p class="section-sub" style="margin-bottom: 20px;">From sign‑up to payout — explicit states and server‑side checks at each step.</p>
+      <div class="state-list">
+        <div class="state-item"><i class="fas fa-envelope"></i> Register → email verification</div>
+        <div class="state-item"><i class="fas fa-mobile-alt"></i> Pay KSh 35 → M‑Pesa STK Push</div>
+        <div class="state-item"><i class="fas fa-check-circle"></i> Server confirms → dashboard unlocked</div>
+        <div class="state-item"><i class="fas fa-user-edit"></i> Complete profile & set chat rate</div>
+        <div class="state-item"><i class="fas fa-handshake"></i> Both accept rate → paid chat</div>
+        <div class="state-item"><i class="fas fa-money-bill-wave"></i> Ledger credits → request payout</div>
+      </div>
+    </div>
+    <div class="col">
+      <h2 class="section-title" style="font-size: 1.8rem;">Account states</h2>
+      <p class="section-sub" style="margin-bottom: 20px;">Separate statuses for email, activation, account, and payout — no ambiguous booleans.</p>
+      <div style="background: white; border-radius: 32px; padding: 24px; border: 1px solid #e1eefb;">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+          <span style="background: #f1f6fe; color: #0a66c2; padding: 8px 18px; border-radius: 40px; font-weight: 500;">PENDING_ACTIVATION</span>
+          <span style="background: #e8f5e9; color: #2e7d32; padding: 8px 18px; border-radius: 40px; font-weight: 500;">ACTIVE</span>
+          <span style="background: #ffebee; color: #b71c1c; padding: 8px 18px; border-radius: 40px; font-weight: 500;">RESTRICTED</span>
+          <span style="background: #eceff1; color: #455a64; padding: 8px 18px; border-radius: 40px; font-weight: 500;">CLOSED</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding-bottom: 10px;"><span><i class="fas fa-check-circle" style="color: #2e7d32; width: 20px;"></i> Email verified</span> <span style="color: #0a66c2; font-weight: 600;">datetime</span></div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding-bottom: 10px;"><span><i class="fas fa-credit-card" style="color: #0a66c2; width: 20px;"></i> Activation payment</span> <span style="color: #0a66c2; font-weight: 600;">SUCCESS</span></div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding-bottom: 10px;"><span><i class="fas fa-id-card" style="color: #0a66c2; width: 20px;"></i> Profile completed</span> <span style="color: #0a66c2; font-weight: 600;">80%</span></div>
+          <div style="display: flex; justify-content: space-between;"><span><i class="fas fa-clock" style="color: #f5b342; width: 20px;"></i> Payout status</span> <span style="color: #0a66c2; font-weight: 600;">NOT_REQUESTED</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH / ADMIN PREVIEW -->
+<section class="tech-section">
+  <div class="container">
+    <h2 class="section-title">Architected for trust & scale</h2>
+    <p class="section-sub">PHP · MariaDB · WebSocket · Daraja STK Push · immutable ledger · role‑based admin</p>
+    <div class="tech-grid">
+      <div class="tech-item"><i class="fas fa-server"></i><h4>PHP 8.x + Composer</h4><p>Auth, payments, wallet logic, REST API</p></div>
+      <div class="tech-item"><i class="fas fa-database"></i><h4>MariaDB/InnoDB</h4><p>Users, payments, messages, double‑entry ledger</p></div>
+      <div class="tech-item"><i class="fas fa-bolt"></i><h4>WebSocket server</h4><p>Real‑time messages, presence, typing indicators</p></div>
+      <div class="tech-item"><i class="fas fa-mobile-alt"></i><h4>M‑Pesa STK Push</h4><p>Idempotent callback, server‑side verification</p></div>
+      <div class="tech-item"><i class="fas fa-shield-alt"></i><h4>Audit & RBAC</h4><p>Admin actions logged, dual approval for payouts</p></div>
+      <div class="tech-item"><i class="fas fa-chart-line"></i><h4>Wallet ledger</h4><p>Immutable entries, reversal only, cached totals</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: white;">Global Chat</div>
+        <p style="max-width: 300px;">International chatting & creator earnings platform. Activation fee KSh 35 unlocks access only. No income guarantees.</p>
+      </div>
+      <div style="display: flex; gap: 50px; flex-wrap: wrap;">
+        <div>
+          <div style="color: white; font-weight: 600; margin-bottom: 12px;">Legal</div>
+          <div><a href="#">Terms</a></div>
+          <div><a href="#">Privacy</a></div>
+          <div><a href="#">Refund policy</a></div>
+          <div><a href="#">Paid chat policy</a></div>
+        </div>
+        <div>
+          <div style="color: white; font-weight: 600; margin-bottom: 12px;">Support</div>
+          <div><a href="#">Safety</a></div>
+          <div><a href="#">Contact</a></div>
+          <div><a href="#">Complaints</a></div>
+          <div><a href="#">Developer docs</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Global Chat is a development concept. No live payments or payouts are processed here. The KSh 35 activation fee is a one‑time platform access fee. Earnings depend on completed paid sessions and are not guaranteed. 
+      <br><br>Prepared according to the Global Chat development plan (Nov 2026) — for demonstration purposes only.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
